@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- **************************************** People ********************************************** -->
+
+    <bean id="peopleBean" class="ru.parhomych.di.constructorinjection.People">
+        <constructor-arg ref="jobBean"/>
+        <constructor-arg value="25"/>
+        <constructor-arg name="name" value="Вася"/>
+    </bean>
+
+    <bean id="peopleBean2" class="ru.parhomych.di.constructorinjection.People">
+        <constructor-arg ref="jobBean2"/>
+        <constructor-arg value="73"/>
+        <constructor-arg name="name" value="Коля"/>
+
+    </bean>
+
+    <bean id="peopleBean3" class="ru.parhomych.di.constructorinjection.People">
+        <constructor-arg ref="jobBean"/>
+        <constructor-arg value="34"/>
+        <constructor-arg name="name" value="Саня"/>
+    </bean>
+
+    <bean id="peopleBean4" class="ru.parhomych.di.constructorinjection.People">
+        <constructor-arg ref="jobBean2"/>
+        <constructor-arg value="12"/>
+        <constructor-arg name="name" value="Виталя"/>
+    </bean>
+
+    <!-- **************************************** Job ***************************************************** -->
+
+    <bean id="jobBean" class="ru.parhomych.di.constructorinjection.Job">
+        <constructor-arg name="nameOfJob" value="Программист"/>
+    </bean>
+    <bean id="jobBean2" class="ru.parhomych.di.constructorinjection.Job">
+        <constructor-arg name="nameOfJob" value="Разнорабочий"/>
+    </bean>
+
+    <!-- **************************************** Learning Group ****************************************** -->
+
+    <bean id="learningGroup01" class="ru.parhomych.di.constructorinjection.LearningGroup">
+        <constructor-arg>
+            <list>
+                <ref bean="peopleBean"/>
+                <ref bean="peopleBean2"/>
+                <ref bean="peopleBean3"/>
+                <ref bean="peopleBean"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <set>
+                <value>"Math"</value>
+                <value>"Java"</value>
+                <value>"OBZH"</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="Староста" value-ref="peopleBean"/>
+                <entry key="Двоечник" value-ref="peopleBean3"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="learningGroup02" class="ru.parhomych.di.constructorinjection.LearningGroup">
+        <constructor-arg>
+            <list>
+                <ref bean="peopleBean"/>
+                <ref bean="peopleBean4"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <set>
+                <value>"Rus Yaz"</value>
+                <value>"Fiz Ra"</value>
+                <value>"Lit Ra"</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="Староста" value-ref="peopleBean4"/>
+                <entry key="Двоечник" value-ref="peopleBean"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+</beans>

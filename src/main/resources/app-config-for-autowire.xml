@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--**************** Head, arm & body beans definition *****************-->
+
+    <bean id="head" class="ru.parhomych.di.autowire.Head">
+        <constructor-arg name="nameOfHead" value="HeadSuper"/>
+        <constructor-arg name="material" value="metal"/>
+    </bean>
+    <bean id="arm" class="ru.parhomych.di.autowire.Arm">
+        <constructor-arg name="nameOfArm" value="ArmSuper"/>
+        <constructor-arg name="material" value="wood"/>
+    </bean>
+    <bean id="body" class="ru.parhomych.di.autowire.Body">
+        <constructor-arg name="nameOfBody" value="BodySuper"/>
+        <constructor-arg name="material" value="plastic"/>
+    </bean>
+
+
+    <!--**************** Robots definition **********************************-->
+
+    <bean id="robot1" autowire="constructor" class="ru.parhomych.di.autowire.Robot"/>
+    <bean id="robot2" autowire="byType" class="ru.parhomych.di.autowire.Robot"/>
+    <bean id="robot3" autowire="byName" class="ru.parhomych.di.autowire.Robot"/>
+
+</beans>

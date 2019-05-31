@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- *************** Robot, созданный с помощью factory-method **************-->
+    <bean id="robotR2D2" class="ru.parhomych.di.factorymethod.RobotFactory" factory-method="getRobotR2D2" />
+
+    <!-- *************** Robot, созданный с помощью factory-bean **************-->
+    <bean id="robotFactoryBean" class="ru.parhomych.di.factorymethod.RobotFactory"/>
+    <bean id="robotMadeByFactoryBean" class="ru.parhomych.di.factorymethod.Robot" factory-bean="robotFactoryBean" factory-method="getFactoryBeanOfRobot"/>
+
+</beans>

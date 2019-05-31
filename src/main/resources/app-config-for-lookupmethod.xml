@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--***********************Lookup here ********************-->
+
+    <bean id="songStore" class="ru.parhomych.di.lookupmethod.SongStore">
+        <lookup-method name="makeMajorSong" bean="majorSong"/>
+        <lookup-method name="makeMinorSong" bean="minorSong"/>
+    </bean>
+
+    <!--************************* Definition of concrete song beans *************-->
+
+    <bean id="minorSong" class="ru.parhomych.di.lookupmethod.Song" scope="prototype">
+        <property name="key" value="c-minor"/>
+        <property name="name" value="Minor song"/>
+    </bean>
+
+    <bean id="majorSong" class="ru.parhomych.di.lookupmethod.Song" scope="prototype">
+        <property name="key" value="d-major"/>
+        <property name="name" value="Major song"/>
+    </bean>
+
+</beans>

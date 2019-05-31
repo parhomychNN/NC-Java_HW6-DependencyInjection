@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <beans>
+        <!-- *************************** People ******************************************-->
+        <bean id="peopleSetterInj01" class="ru.parhomych.di.setterinjection.People">
+            <property name="job" ref="jobProgrammer" />
+            <property name="age" value="12"/>
+            <property name="name" value="Вася"/>
+        </bean>
+        <bean id="peopleSetterInj02" class="ru.parhomych.di.setterinjection.People">
+            <property name="job" ref="jobDriver" />
+            <property name="age" value="25"/>
+            <property name="name" value="Костя"/>
+        </bean>
+        <bean id="peopleSetterInj03" class="ru.parhomych.di.setterinjection.People">
+            <property name="job" ref="jobProgrammer" />
+            <property name="age" value="43"/>
+            <property name="name" value="Николай"/>
+        </bean>
+        <bean id="peopleSetterInj04" class="ru.parhomych.di.setterinjection.People">
+            <property name="job" ref="jobDriver" />
+            <property name="age" value="23"/>
+            <property name="name" value="Виталик"/>
+        </bean>
+
+        <!-- *************************** Job ******************************************-->
+        <bean id="jobProgrammer" class="ru.parhomych.di.setterinjection.Job">
+            <property name="nameOfJob" value="Программист"/>
+        </bean>
+
+        <bean id="jobDriver" class="ru.parhomych.di.setterinjection.Job">
+            <property name="nameOfJob" value="Водитель"/>
+        </bean>
+
+        <!-- *************************** LearningGroups ******************************************-->
+
+        <bean id="learningGroup01" class="ru.parhomych.di.setterinjection.LearningGroup">
+            <property name="peopleList">
+                <list>
+                    <ref bean="peopleSetterInj01"/>
+                    <ref bean="peopleSetterInj02"/>
+                    <ref bean="peopleSetterInj03"/>
+                </list>
+            </property>
+            <property name="subjects">
+                <set>
+                    <value>Computer science</value>
+                    <value>English</value>
+                    <value>Music</value>
+                </set>
+            </property>
+            <property name="rolesInGroup">
+                <map>
+                    <entry key="Староста" value-ref="peopleSetterInj01"/>
+                    <entry key="Двоечник" value-ref="peopleSetterInj03"/>
+                </map>
+            </property>
+        </bean>
+
+        <bean id="learningGroup02" class="ru.parhomych.di.setterinjection.LearningGroup">
+            <property name="peopleList">
+                <list>
+                    <ref bean="peopleSetterInj04"/>
+                    <ref bean="peopleSetterInj03"/>
+                </list>
+            </property>
+            <property name="subjects">
+                <set>
+                    <value>Russian</value>
+                    <value>English</value>
+                </set>
+            </property>
+            <property name="rolesInGroup">
+                <map>
+                    <entry key="Староста" value-ref="peopleSetterInj04"/>
+                    <entry key="Двоечник" value-ref="peopleSetterInj03"/>
+                </map>
+            </property>
+        </bean>
+    </beans>
+
+</beans>
